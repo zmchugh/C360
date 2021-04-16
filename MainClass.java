@@ -21,7 +21,7 @@ public class MainClass extends Application
   		TabPane tabPane = new TabPane();
   		
   		
-  		Pane aboutPane = new VBox();
+  		AboutPane aboutPane = new AboutPane();
   		
 		Tab about = new Tab();
 		about.setText("About");
