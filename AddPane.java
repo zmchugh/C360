@@ -1,5 +1,6 @@
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ public class AddPane extends GridPane{
     private ArrayList<VaccineEntry> list;
     private int COL_SIZE = 100;
     private TextField date, id, lastName, firstName, vType, location;
+    private Label msg;
     public AddPane(ArrayList<VaccineEntry> list)
     {
         //spacing setup
@@ -26,6 +28,7 @@ public class AddPane extends GridPane{
         Label l4 = new Label("\tFirst Name:");
         Label l5 = new Label("\tVaccine Type:");
         Label l6 = new Label("\tLocation:");
+        msg = new Label("");
         date = new TextField();
         id = new TextField();
         lastName = new TextField();
@@ -45,11 +48,12 @@ public class AddPane extends GridPane{
         this.add(vType, 1, 4);
         this.add(l6, 0, 5);
         this.add(location, 1, 5);
-
         Button submit = new Button("Submit");
         submit.setPrefWidth(160);
         submit.setOnAction(new ButtonHandler());
         this.add(submit, 1, 6);
+        this.add(msg, 1, 7);
+
     }
 
     private class ButtonHandler implements EventHandler<ActionEvent>
@@ -59,7 +63,15 @@ public class AddPane extends GridPane{
             //get data from labels and create object -> add to list
             VaccineEntry newEntry = new VaccineEntry(id.getText(), lastName.getText(),
             firstName.getText(), vType.getText(), date.getText(), location.getText());
-            
+
+            id.clear();
+            lastName.clear();
+            firstName.clear();
+            vType.clear();
+            date.clear();
+            location.clear();
+            msg.setText("Added Successfully");
+            msg.setTextFill(Color.GREEN);
             list.add(newEntry);
         }
     }
