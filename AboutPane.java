@@ -1,10 +1,6 @@
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.event.ActionEvent;
-import java.util.ArrayList;
 import javafx.scene.control.*;
 public class AboutPane extends GridPane {
 	
