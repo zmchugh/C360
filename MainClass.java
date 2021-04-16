@@ -42,7 +42,7 @@ public class MainClass extends Application
 		add.setClosable(false);
 		add.setContent(addPane);
 		
-		Pane savePane = new VBox();
+		SavePane savePane = new SavePane(vaccineList);
 		
 		Tab save = new Tab();
 		save.setText("Save Data");
