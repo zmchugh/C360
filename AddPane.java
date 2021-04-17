@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import javafx.scene.control.*;
 public class AddPane extends GridPane{
 
-    private ArrayList<VaccineEntry> list;
+    private VaccineList list;
     private int COL_SIZE = 100;
     private TextField date, id, lastName, firstName, vType, location;
     private Label msg;
-    public AddPane(ArrayList<VaccineEntry> list)
+    public AddPane(VaccineList list)
     {
         //spacing setup
         this.getColumnConstraints().add(new ColumnConstraints(COL_SIZE));
@@ -70,9 +70,17 @@ public class AddPane extends GridPane{
             vType.clear();
             date.clear();
             location.clear();
-            msg.setText("Added Successfully");
-            msg.setTextFill(Color.GREEN);
-            list.add(newEntry);
+            boolean addResult = list.add(newEntry);
+            if(addResult)
+            {
+                msg.setTextFill(Color.GREEN);
+                msg.setText("Added Successfully");
+            }
+            else
+            {
+                msg.setTextFill(Color.RED);
+                msg.setText("Error Adding - Dupplicate Entry");
+            }
         }
     }
 
