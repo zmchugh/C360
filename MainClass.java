@@ -15,8 +15,9 @@ public class MainClass extends Application
   	public void start(Stage primaryStage)
   	{
   		
-  		ArrayList<VaccineEntry> vaccineList = new ArrayList<VaccineEntry>();  		
-  		
+  		ArrayList<VaccineEntry> list = new ArrayList<VaccineEntry>();  		
+  		VaccineList vaccineList = new VaccineList(list);
+
   		StackPane root = new StackPane();
   		TabPane tabPane = new TabPane();
   		
@@ -28,7 +29,7 @@ public class MainClass extends Application
 		about.setClosable(false);
 		about.setContent(aboutPane);
   		
-		Pane loadPane = new LoadPane(vaccineList);
+		LoadPane loadPane = new LoadPane(vaccineList);
 		
 		Tab load = new Tab();
 		load.setText("Load Data");
