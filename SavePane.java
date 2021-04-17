@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import javafx.scene.control.*;
 public class SavePane extends GridPane{
 
-	private ArrayList<VaccineEntry> list;
+	private VaccineList list;
 	private int COL_SIZE = 150;
 	private TextField input;
 	private Label msg;
-    public SavePane(ArrayList<VaccineEntry> list)
+    public SavePane(VaccineList list)
     {
     	//spacing setup
         this.getColumnConstraints().add(new ColumnConstraints(COL_SIZE));
@@ -49,8 +49,8 @@ public class SavePane extends GridPane{
             	BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
 				writer.write("ID,Last Name,First Name,Vaccine Type,Vaccination Date,Vaccine Location\n");	// This creates/clears a file		
 				// Appends to a new line for every vaccineEntry
-				for(int i = 0; i < list.size(); i++) {
-					writer.append(list.get(i).toString());
+				for(int i = 0; i < list.getVaccineList().size(); i++) {
+					writer.append(list.getVaccineList().get(i).toString());
 	            }
 				writer.close();
 			} catch (IOException e1) {
