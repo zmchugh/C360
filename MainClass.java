@@ -36,7 +36,7 @@ public class MainClass extends Application
 		load.setClosable(false);
 		load.setContent(loadPane);
 		
-		AddPane addPane = new AddPane(vaccineList);
+		AddPane addPane = new AddPane(vaccineList, loadPane);
 		
 		Tab add = new Tab();
 		add.setText("Add Data");

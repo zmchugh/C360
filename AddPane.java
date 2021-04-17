@@ -9,12 +9,14 @@ import javafx.scene.control.*;
 public class AddPane extends GridPane{
 
     private VaccineList list;
+    private LoadPane lp;
     private int COL_SIZE = 100;
     private TextField date, id, lastName, firstName, vType, location;
     private Label msg;
-    public AddPane(VaccineList list)
+    public AddPane(VaccineList list, LoadPane lp)
     {
         //spacing setup
+        this.lp = lp;
         this.getColumnConstraints().add(new ColumnConstraints(COL_SIZE));
         this.setHgap(10);
         this.setVgap(10);
@@ -56,13 +58,36 @@ public class AddPane extends GridPane{
 
     }
 
+    private boolean isNullOrEmpty(String s)
+    {
+        return s == null || s.equals("");
+    }
+
     private class ButtonHandler implements EventHandler<ActionEvent>
     {
         public void handle(ActionEvent e)
         {
             //get data from labels and create object -> add to list
-            VaccineEntry newEntry = new VaccineEntry(id.getText(), lastName.getText(),
-            firstName.getText(), vType.getText(), date.getText(), location.getText());
+            String ID = id.getText();
+            String ln = lastName.getText();
+            String fn = firstName.getText();
+            String vt = vType.getText();
+            String d = date.getText();
+            String loc = location.getText();
+            if(isNullOrEmpty(ID))
+                ID = "#";
+            if(isNullOrEmpty(ln))
+                ln = "#";
+            if(isNullOrEmpty(fn))
+                fn = "#";
+            if(isNullOrEmpty(vt))
+                vt = "#";    
+            if(isNullOrEmpty(d))
+                d = "#";
+            if(isNullOrEmpty(loc))
+                loc = "#";
+
+            VaccineEntry newEntry = new VaccineEntry(ID, ln, fn, vt, d, loc);
 
             boolean addResult = list.add(newEntry);
             if(addResult)
@@ -75,6 +100,7 @@ public class AddPane extends GridPane{
                 vType.clear();
                 date.clear();
                 location.clear();
+                lp.update();
             }
             else
             {
