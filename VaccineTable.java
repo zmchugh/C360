@@ -6,9 +6,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 
 public class VaccineTable extends ScrollPane{
-	private ArrayList<VaccineEntry> list;
+	private VaccineList list;
 	private GridPane table;
-	public VaccineTable(ArrayList<VaccineEntry> list) {
+	public VaccineTable(VaccineList list) {
 		this.list = list;
 
 
@@ -39,8 +39,8 @@ public class VaccineTable extends ScrollPane{
 		table.add(type, 3, 0);
 		table.add(date, 4, 0);
 		table.add(loc, 5, 0);
-		for(int i = 0; i < list.size(); i++) {
-			VaccineEntry e = list.get(i);
+		for(int i = 0; i < list.getVaccineList().size(); i++) {
+			VaccineEntry e = list.getVaccineList().get(i);
 			Label idl = new Label(e.getId());
 			Label lastl = new Label(e.getLastName());
 			Label firstl = new Label(e.getFirstName());
