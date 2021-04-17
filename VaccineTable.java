@@ -27,6 +27,7 @@ public class VaccineTable extends ScrollPane{
 
 
 	public void update() {
+		table.getChildren().clear();
 		Label id = new Label("ID");
 		Label last = new Label("Last Name");
 		Label first = new Label("First Name");
