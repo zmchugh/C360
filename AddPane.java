@@ -64,17 +64,17 @@ public class AddPane extends GridPane{
             VaccineEntry newEntry = new VaccineEntry(id.getText(), lastName.getText(),
             firstName.getText(), vType.getText(), date.getText(), location.getText());
 
-            id.clear();
-            lastName.clear();
-            firstName.clear();
-            vType.clear();
-            date.clear();
-            location.clear();
             boolean addResult = list.add(newEntry);
             if(addResult)
             {
                 msg.setTextFill(Color.GREEN);
                 msg.setText("Added Successfully");
+                id.clear();
+                lastName.clear();
+                firstName.clear();
+                vType.clear();
+                date.clear();
+                location.clear();
             }
             else
             {
