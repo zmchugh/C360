@@ -47,55 +47,10 @@ public class SavePane extends GridPane{
             try {
 				// Setup a buffered writer to write to said file name
             	BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-				writer.write("");	// This creates/clears a file
-				// This Starts off the file by listing the column names at the top.
-				for(int j = 0; j < 6; j++) {
-            		if(j == 0) {
-            			writer.append("ID");
-            			writer.append(",");
-            		}if(j == 1) {
-            			writer.append("Last Name");
-            			writer.append(",");
-            		}if(j == 2) {
-            			writer.append("First Name");
-            			writer.append(",");
-            		}if(j == 3) {
-            			writer.append("Vaccine Type");
-            			writer.append(",");
-            		}if(j == 4) {
-            			writer.append("Vaccination Date");
-            			writer.append(",");
-            		}if(j == 5) {
-            			writer.append("Vaccine Location");
-            		}
-            		
-            	}
-				writer.append("\n");
-				// These nested loops iterate through the list and write to the file
+				writer.write("ID,Last Name,First Name,Vaccine Type,Vaccination Date,Vaccine Location\n");	// This creates/clears a file		
+				// Appends to a new line for every vaccineEntry
 				for(int i = 0; i < list.size(); i++) {
-	            	// Writes each column
-					for(int j = 0; j < 6; j++) {
-	            		if(j == 0) {
-	            			writer.append(list.get(i).getId());
-	            			writer.append(",");
-	            		}if(j == 1) {
-	            			writer.append(list.get(i).getLastName());
-	            			writer.append(",");
-	            		}if(j == 2) {
-	            			writer.append(list.get(i).getFirstName());
-	            			writer.append(",");
-	            		}if(j == 3) {
-	            			writer.append(list.get(i).getType());
-	            			writer.append(",");
-	            		}if(j == 4) {
-	            			writer.append(list.get(i).getDate());
-	            			writer.append(",");
-	            		}if(j == 5) {
-	            			writer.append(list.get(i).getLocation());
-	            		}
-	            	}
-	            	// Newline once current index has ended
-	            	writer.append("\n");
+					writer.append(list.get(i).toString());
 	            }
 				writer.close();
 			} catch (IOException e1) {
