@@ -33,7 +33,7 @@ public class LoadPane extends VBox{
 		//pass data
 		Button load = new Button("Load from file");
 		load.setPrefWidth(160);
-		
+
 		load.setOnAction(new ButtonHandler());
 
 		fileLoad.getChildren().addAll(fileField,load,msg);
@@ -54,6 +54,7 @@ public class LoadPane extends VBox{
 	{
 		public void handle(ActionEvent e)
 		{
+			msg.setText("");
 			//get data from labels and create object -> add to list
 			String fileName = "test";
 			//  fileName = input.getText();
@@ -67,18 +68,25 @@ public class LoadPane extends VBox{
 				while(scan.hasNext()) {
 					String line = scan.nextLine();
 					String split[] = line.split(",");
-					
-					VaccineEntry ve = new VaccineEntry(split[0], split[1], split[2], split[3], split[4], split[5]);
-					list.add(ve);
+
+					if(split.length != 6) {
+						//wrong number of fields
+						msg.setText("Invalid input format!");
+						update();
+					}
+					else {
+						VaccineEntry ve = new VaccineEntry(split[0], split[1], split[2], split[3], split[4], split[5]);
+						list.add(ve);
+					}
 				}
-				
+
 				scan.close();
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}
 			update();
 		}
-	
+
 	}
 
 }
