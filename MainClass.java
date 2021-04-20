@@ -50,7 +50,10 @@ public class MainClass extends Application
 		save.setClosable(false);
 		save.setContent(savePane);
 		
-		Pane visualPane = new VBox();
+        /**
+         * Create Visual Pane by passing vaccineList
+         */
+		VisualPane visualPane = new VisualPane(vaccineList);
 		
 		Tab visual = new Tab();
 		visual.setText("Visualize Data");
