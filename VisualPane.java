@@ -113,6 +113,9 @@ public class VisualPane extends VBox {
 
             barChart = new BarChart(xAxis, yAxis);
 
+            barChart.setBarGap(2d);
+            barChart.setCategoryGap(5d);
+
             this.getChildren().addAll(barChart);
         }
 
@@ -123,7 +126,7 @@ public class VisualPane extends VBox {
 
         public void updateDataSeries(String basketName, int count) {
             XYChart.Series<String, Integer> dataSeries = new XYChart.Series<String, Integer>();
-            dataSeries.getData().add(new XYChart.Data<String, Integer>(basketName, count));
+            dataSeries.getData().add(new XYChart.Data<String, Integer>("", count));
             dataSeries.setName(basketName);
             barChart.getData().add(dataSeries);
         }
