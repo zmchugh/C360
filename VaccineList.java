@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+/**
+ * Contains an arraylist of VaccineEntry objects
+ * Also allows indirect update the items in the arraylist
+ */
 public class VaccineList {
     ArrayList<VaccineEntry> vaccineList;
 

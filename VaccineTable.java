@@ -4,7 +4,10 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
-
+/**
+ * VaccineTable class handles displaying the table
+ * that allows viewing of the VaccineList
+ */
 public class VaccineTable extends ScrollPane{
 	private VaccineList list;
 	private GridPane table;
@@ -24,7 +27,6 @@ public class VaccineTable extends ScrollPane{
 
 
 	}
-
 
 	public void update() {
 		table.getChildren().clear();
@@ -56,5 +58,4 @@ public class VaccineTable extends ScrollPane{
 			table.add(locl, 5, i+1);
 		}
 	}
-
 }

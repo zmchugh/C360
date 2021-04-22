@@ -15,6 +15,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+/**
+ * LoadPane implements the load data functionality
+ * As well as displaying a table containing all the entries
+ */
 public class LoadPane extends VBox{
 	private VaccineList list;
 	

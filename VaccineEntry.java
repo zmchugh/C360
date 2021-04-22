@@ -1,4 +1,6 @@
-
+/**
+ * VaccineEntry class models each entry in the Vaccine Record Table
+ */
 public class VaccineEntry {
 
 	private String id;
@@ -17,6 +19,7 @@ public class VaccineEntry {
 		this.location = location;
 	}
 
+    /* Getters and Setters */
 	public String getId() {
 		return id;
 	}

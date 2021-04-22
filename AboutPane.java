@@ -2,9 +2,15 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+/**
+ * AboutPane presents information about the team
+ */
 public class AboutPane extends GridPane {
 	
 	private int COL_SIZE = 150;
+    /**
+     * Constructor for the AboutPane creates the Pane with information
+     */
 	public AboutPane() {
 		//spacing setup
         this.getColumnConstraints().add(new ColumnConstraints(COL_SIZE));

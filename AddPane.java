@@ -6,6 +6,9 @@ import javafx.geometry.Insets;
 import javafx.event.ActionEvent;
 import java.util.ArrayList;
 import javafx.scene.control.*;
+/**
+ * AddPane implements functionality for adding item to the entry
+ */
 public class AddPane extends GridPane{
 
     private VaccineList list;
@@ -13,6 +16,11 @@ public class AddPane extends GridPane{
     private int COL_SIZE = 100;
     private TextField date, id, lastName, firstName, vType, location;
     private Label msg;
+    /**
+     * Construct AddPane to add item and update load pane.
+     * @param list VaccineList object
+     * @param lp LoadPane object
+     */
     public AddPane(VaccineList list, LoadPane lp)
     {
         //spacing setup
@@ -63,6 +71,9 @@ public class AddPane extends GridPane{
         return s == null || s.equals("");
     }
 
+    /**
+     * Handler for add button
+     */
     private class ButtonHandler implements EventHandler<ActionEvent>
     {
         public void handle(ActionEvent e)
@@ -109,8 +120,4 @@ public class AddPane extends GridPane{
             }
         }
     }
-
-
-
-
 }

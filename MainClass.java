@@ -8,7 +8,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+/**
+ * MainClass contains implementation of the software program
+ */
 public class MainClass extends Application
 {
 
