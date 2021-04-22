@@ -28,7 +28,8 @@ public class VisualPane extends VBox {
     private VaccineList list;
     protected BarChartDisplay barChart;
     /** 
-     * Constructor
+     * Constructor to build the entrie pane
+     * @param list the VaccineList which hold an array list of VaccineEntry
      */
     public VisualPane(VaccineList list) {
         this.list = list;
@@ -48,16 +49,19 @@ public class VisualPane extends VBox {
 
         viewButton.getChildren().addAll(viewByType, viewByLocation);
 
-        viewByType.setOnAction(new typeChartHandler());
-        viewByLocation.setOnAction(new locationChartHandler());
+        viewByType.setOnAction(new TypeChartHandler());
+        viewByLocation.setOnAction(new LocationChartHandler());
 
         // create bar chart
         barChart = new BarChartDisplay();
         barChart.setPrefSize(960, 960);
         this.getChildren().addAll(viewButton, barChart);
     }
-
-    private class typeChartHandler implements EventHandler<ActionEvent> {
+    
+    /**
+     * The Handler for refeshing chart using type as category
+     */
+    private class TypeChartHandler implements EventHandler<ActionEvent> {
         public void handle(ActionEvent event) { 
             // erase previous data
             barChart.eraseDataSeries();
@@ -78,7 +82,10 @@ public class VisualPane extends VBox {
         }
     }
     
-    private class locationChartHandler implements EventHandler<ActionEvent> {
+    /**
+     * The Handler for refeshing chart using location as category
+     */
+    private class LocationChartHandler implements EventHandler<ActionEvent> {
         public void handle(ActionEvent event) {
             // erase previous data
             barChart.eraseDataSeries();
@@ -99,6 +106,9 @@ public class VisualPane extends VBox {
         }
     }
 
+    /**
+     * Private class handling the creation of BarChart
+     */
     private class BarChartDisplay extends GridPane {
         CategoryAxis xAxis;
         NumberAxis yAxis;
@@ -119,11 +129,21 @@ public class VisualPane extends VBox {
             this.getChildren().addAll(barChart);
         }
 
+        /**
+         * Update the label for the bar chart
+         * @param xAxisLabel
+         * @param yAxisLabel
+         */
         public void updateChartLabel(String xAxisLabel, String yAxisLabel) {
             xAxis.setLabel(xAxisLabel);
             yAxis.setLabel(yAxisLabel);
         }
 
+        /**
+         * add a dataSeries which is a category to the BarChart
+         * @param basketName
+         * @param count
+         */
         public void updateDataSeries(String basketName, int count) {
             XYChart.Series<String, Integer> dataSeries = new XYChart.Series<String, Integer>();
             dataSeries.getData().add(new XYChart.Data<String, Integer>("", count));
@@ -131,6 +151,9 @@ public class VisualPane extends VBox {
             barChart.getData().add(dataSeries);
         }
 
+        /**
+         * Erases all previous added dataSeries
+         */
         public void eraseDataSeries() {
             barChart.getData().clear();
         }
